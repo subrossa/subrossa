@@ -1,1 +1,1 @@
-docker build -t subrossa/webserver:latest
+docker build -t subrossa/webserver:latest .
