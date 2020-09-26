@@ -1,4 +1,7 @@
-FROM ubuntu:14.04
-COPY webserver.sh /usr/bin/webserver.sh
-COPY index.html /usr/bin/index.html
-CMD /usr/bin/webserver.sh
+FROM ubuntu:18.04
+WORKDIR /tmp/webserver
+COPY Dockerfile index.html webserver.sh /tmp/webserver/
+RUN apt-get update && apt-get -y install netcat && apt-get clean
+RUN chmod +x /tmp/webserver/webserver.sh
+EXPOSE 8080
+RUN /tmp/webserver/webserver.sh
